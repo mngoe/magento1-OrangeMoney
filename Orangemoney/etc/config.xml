@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Ynote_Orangemoney>
+            <version>0.1.2</version>
+        </Ynote_Orangemoney>
+    </modules>
+    <default>
+        <payment>
+            <orangemoney>
+                <model>orangemoney/standard</model>
+            </orangemoney>
+		</payment>
+    </default>
+    <frontend>
+        <routers>
+            <orangemoneyfrontend>
+                <use>standard</use>
+                <args>
+                    <module>Ynote_Orangemoney</module>
+                    <frontName>orangemoney</frontName>
+                  </args>
+               </orangemoneyfrontend>
+        </routers>
+        <layout>
+            <updates>
+                <orangemoney>
+                    <file>orangemoney.xml</file>
+                </orangemoney>
+            </updates>
+        </layout>
+    </frontend>
+
+    <default>
+        <payment>
+            <orangemoney>
+                <model>orangemoney/standard</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>Orange Money</title>
+                <payment_action>sale</payment_action>
+                <access_token>XXXXXX</access_token>
+                <submit_url>https://api.orange.com/orange-money-webpay/dev/v1/webpayment</submit_url>
+                <merchant_id>Insert merchant id</merchant_id>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </orangemoney>
+        </payment>
+    </default>
+    <global>
+        <resources>
+            <orangemoney_setup>
+                <setup>
+                    <module>Ynote_Orangemoney</module>
+                    <class>Ynote_Orangemoney_Model_Resource_Setup</class>
+                </setup>
+            </orangemoney_setup>
+        </resources>
+        <models>
+            <orangemoney>
+                <class>Ynote_Orangemoney_Model</class>
+                <resourceModel>orangemoney_resource</resourceModel>
+            </orangemoney>
+            <orangemoney_resource>
+                <class>Ynote_Orangemoney_Model_Resource</class>
+                <entities>
+                    <notification>
+                        <table>ynote_orangemoney</table>
+                    </notification>
+                </entities>
+            </orangemoney_resource>
+        </models>
+        <helpers>
+            <orangemoney>
+                <class>Ynote_Orangemoney_Helper</class>
+            </orangemoney> 
+        </helpers>
+        <blocks>
+            <orangemoney>
+                <class>Ynote_Orangemoney_Block</class>
+            </orangemoney>
+        </blocks>
+    </global>
+     
+</config>
